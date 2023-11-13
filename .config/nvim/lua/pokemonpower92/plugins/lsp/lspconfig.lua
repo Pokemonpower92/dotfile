@@ -42,10 +42,10 @@ return {
       keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
       opts.desc = "Show buffer diagnostics"
-      keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+      keymap.set("n", "<leader>DO", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
       opts.desc = "Show line diagnostics"
-      keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+      keymap.set("n", "<leader>do", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
       opts.desc = "Go to previous diagnostic"
       keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
@@ -70,6 +70,12 @@ return {
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
+
+    vim.diagnostic.config({ virtual_text = true })
+    vim.cmd([[
+        set signcolumn=yes
+        autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+    ]])
 
     -- configure html server
     lspconfig["html"].setup({
