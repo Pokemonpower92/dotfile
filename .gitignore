@@ -1,0 +1,5 @@
+.config/*
+!.config/nvim
+!.config/configstore
+!.config/iterm2
+

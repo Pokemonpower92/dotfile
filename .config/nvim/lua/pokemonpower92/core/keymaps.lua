@@ -3,9 +3,13 @@ vim.g.mapleader = " "
 local keymap = vim.keymap -- for conciseness
 
 -- General Keymaps -------------------
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- use <leader>i to exit insert mode
-keymap.set("i", "<leader>i", "<ESC>", { desc = "Exit insert mode with jk" })
+keymap.set("i", "<leader>jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })

@@ -17,9 +17,6 @@ require("lazy").setup(
         {import = "pokemonpower92.plugins.lsp"},
     }, 
     {
-        install = { 
-            colorscheme = { "nightfly" },
-        },
         checker = {
             enabled = true, 
             notify = false,
@@ -29,3 +26,5 @@ require("lazy").setup(
         },
     }
 )
+
+vim.cmd([[autocmd ColorScheme * :lua vim.g.nightflyTransparent = true]])
